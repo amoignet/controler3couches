@@ -6,6 +6,6 @@ export class UserRepository {
     db = DbHelper.get();
 
     selectAll() {
-        this.db.query(this.GET_ALL);
+        return this.db.query(this.GET_ALL);
     }
 }

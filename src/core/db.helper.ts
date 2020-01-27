@@ -22,8 +22,26 @@ export class DbHelper {
     }
 
     // Création de la method de class query de la class dbHelper
-    public query( sqlRequest: string, params?: any ) {
-        // La method de class query connecte ma class DbHelper à la fonction query de mysql
-        return this.connection.query(sqlRequest, params);
-    }
+    public query( sql: string, args?: any ) {
+        return new Promise( ( resolve, reject ) => {
+            // La method de class query connecte ma class DbHelper à la fonction query de mysql
+    this.connection.query( sql, args, ( err, rows ) => {
+        if ( err ) {
+            return reject( err );
+        }
+        resolve( rows );
+    } );
+} );
+}
+
+public close() {
+return new Promise( ( resolve, reject ) => {
+    this.connection.end( err => {
+        if ( err ) {
+            return reject( err );
+        }
+        resolve();
+    } );
+} );
+}
 }

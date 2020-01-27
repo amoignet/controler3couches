@@ -1,6 +1,7 @@
 import express from 'express';
 import loaders from './loaders';
 import { userController } from './controller/user.controller';
+import { playlistController } from './controller/playlist.controller';
 
 async function startServer() {
 
@@ -12,6 +13,7 @@ async function startServer() {
 
     // initialise les routes de l'application
     userController(app);
+    playlistController(app);
 
     // j'écoute le serveur
     app.listen(3000, () => console.log('Example app listening on port 3000!'));

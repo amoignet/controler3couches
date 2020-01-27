@@ -5,7 +5,7 @@ export const userController = (app: Application) => {
 
     const userService = new UserService();
 
-    app.get('/playlists', (req: Request, res: Response) => {
+    app.get('/users', (req: Request, res: Response) => {
         res.send(userService.getAll());
     });
 };
